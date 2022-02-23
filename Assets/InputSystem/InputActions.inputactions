@@ -1,0 +1,90 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "MainActionMap",
+            "id": "ebb0a5bc-ef60-4ea0-9c29-f5b20e72185d",
+            "actions": [
+                {
+                    "name": "OnHorizontalAxisLeft",
+                    "type": "Button",
+                    "id": "0d8ac035-7d34-4211-a778-5aec6481732a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OnHorizontalAxisRight",
+                    "type": "Button",
+                    "id": "dbbd31c2-da4e-448d-a4b3-4943946f5d8a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OnVerticalAxisUp",
+                    "type": "Button",
+                    "id": "23ced435-7aea-40e8-aa4e-d9a74157fd4e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OnVerticalAxisDown",
+                    "type": "Button",
+                    "id": "9336f0aa-0b3e-42ff-b8ef-04562e7f84d7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "296e43c0-0c78-489b-a5b4-6bcafe696251",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnHorizontalAxisLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a727450c-abce-40bd-9987-71f4a2de3a7a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnVerticalAxisUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be963f75-fbb2-4eca-b82e-071978f63a67",
+                    "path": "<Keyboard>/d",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnHorizontalAxisRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f445f30a-f63d-4142-aa3e-c3fc3961af53",
+                    "path": "<Keyboard>/s",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OnVerticalAxisDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
