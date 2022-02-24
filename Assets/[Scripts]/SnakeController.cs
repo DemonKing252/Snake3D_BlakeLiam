@@ -15,6 +15,17 @@ public class SnakeController : MonoBehaviour
     [SerializeField] private float growRate = 5f;
     [SerializeField] private int startingSize = 3;
 
+    private void Awake()
+    {
+        GameManager.Instance.onFruitCollected += OnFruitCollected;
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.onFruitCollected -= OnFruitCollected;
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +35,8 @@ public class SnakeController : MonoBehaviour
         {
             GrowSnake();
         }
-
-        InvokeRepeating(nameof(GrowSnake), growRate, growRate);
+        ResetSnake();
+        //InvokeRepeating(nameof(GrowSnake), growRate, growRate);
     }
 
     // Update is called once per frame
@@ -33,8 +44,11 @@ public class SnakeController : MonoBehaviour
     {
         
     }
+    public void OnFruitCollected()
+    {
+        GrowSnake();
+    }
 
-    
     private void FixedUpdate()
     {
         frameTick++;
@@ -60,18 +74,28 @@ public class SnakeController : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("Boundary"))
         {
-            ResetSnake();
+            Debug.Log("[BOUNDARY] Round loss...");
+            OnRoundLoss();
         }
         else if (other.gameObject.CompareTag("Player"))
         {
-            ResetSnake();
+
+            Debug.Log("[PLAYER] Round loss...");
+            OnRoundLoss();
         }
 
     }
-    private void ResetSnake()
+    public void ResetSnake()
     {
+        // If there is a text animation going on, stop it
+        GameManager.Instance.StopAllCoroutines();
+
+        GameManager.Instance.ResetScore();
+        GameManager.Instance.ResetLives();
+
         transform.position = new Vector3(0f, 0.5f, 0f);
         // We don't want to destroy the head of the snake
         // Start at index 1
@@ -87,6 +111,31 @@ public class SnakeController : MonoBehaviour
         {
             GrowSnake();
         }
+
+    }
+    public void OnRoundLoss()
+    {
+        transform.position = new Vector3(0f, 0.5f, 0f);
+        // If there is a text animation going on, stop it
+        GameManager.Instance.StopAllCoroutines();
+
+        GameManager.Instance.LoseLife();
+
+        // We don't want to destroy the head of the snake
+        // Start at index 1
+        for (int i = 1; i < snakeElements.Count; i++)
+        {
+            Destroy(snakeElements[i].gameObject);
+        }
+        snakeElements.Clear();
+        snakeElements.Add(transform);
+
+        // We already have the head, so subtract 1 to visually have the same amount of elements
+        for (int i = 0; i < startingSize - 1; i++)
+        {
+            GrowSnake();
+        }
+
     }
 
     #region Input
