@@ -14,11 +14,13 @@ public class Fruit : MonoBehaviour
     {
         RandomLocation();
     }
-    private void RandomLocation()
+    public void RandomLocation()
     {
-        int xPos = Random.Range(-boundaries.x, +boundaries.x);
+        Vector2 tempBoundary = (Vector2)boundaries * GameManager.Instance.arenaScaleXZ;
+
+        int xPos = (int)Random.Range(-tempBoundary.x, +tempBoundary.x);
         float yPos = 0.5f;
-        int zPos = Random.Range(-boundaries.y, +boundaries.y);
+        int zPos = (int)Random.Range(-tempBoundary.y, +tempBoundary.y);
 
         transform.position = new Vector3(xPos, yPos, zPos);
     }

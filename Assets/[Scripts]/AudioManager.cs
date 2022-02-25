@@ -4,7 +4,8 @@ using UnityEngine;
 public enum Audio
 {
     MainTheme,
-    Pickup
+    Pickup,
+    BtnClick
 
 }
 
